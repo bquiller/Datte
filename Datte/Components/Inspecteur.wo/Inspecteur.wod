@@ -1,0 +1,102 @@
+Form : WOForm {
+	id = "inspecteurForm";
+	multipleSubmit = true;
+}
+
+RechercheContainer : AjaxUpdateContainer {
+	id = "RechercheContainer";
+	class = "box";
+}
+
+EventTitle : WOString{
+	value = session.event.title;
+}
+EventParticipants: WORepetition {
+	list = session.event.participants;
+	item = participant;
+}
+EventParticipant : WOString {
+	value = participant.nomPrenomAffichage;
+}
+
+NewEventParticipant : WOString {
+	value = nomPrenomAffichage;
+}
+DeleteParticipant : CktlAjaxButton {
+	type = "delete";
+    //text = "Annuler";
+    action = deleteParticipant;
+    updateContainerID = "RechercheContainer";
+    title = "Supprimer le participant sélectionné";
+}
+
+AddParticipant : CktlAjaxButton {
+	type = "add";
+    text = "Ajouter";
+    action = addParticipant;
+    updateContainerID = "RechercheContainer";
+    title = "Ajouter le participant sélectionné";
+}
+
+CandidatIsSelected : ERXNonNullConditional {
+	condition = candidat;
+}
+
+EvenementNotFull : ERXNonZeroConditional {
+	condition = session.event.nbRdvRest;
+	negate = true;
+}
+ShowAddParticipant : WOConditional {
+	condition = showAddParticipant;
+}
+
+ShowSelCandidat : WOConditional {
+	condition = showSelCandidat;
+}
+
+MessageErreur : WOString {
+	value = erreurSaisieMessage;
+}
+
+AnnulerInscription : CktlAjaxButton {
+	type = "cancel";
+    text = "Annuler";
+    title = "Annuler";
+    onClick = "CAMD.close('InspecteurBox_win')";
+}
+ValiderInscription : CktlAjaxButton {
+	type = "add";
+    text = "Valider";
+    action = addEtudiant;
+    updateContainerID = "RechercheContainer";
+    title = "Valider ce rendez-vous";
+    onClick = "CAMD.close('InspecteurBox_win')";
+}
+
+Fermer : CktlAjaxButton {
+	type = "cancel";
+    text = "Fermer";
+    title = "Fermer";
+    onClick = "CAMD.close('InspecteurBox_win');";
+    updateContainerID = ^updateContainerID;
+}
+EventStart: WOString {
+	value = session.event.start;
+	dateformat = "dd/MM/yyyy 'à' HH:mm";
+}
+EventEnd: WOString {
+	value = session.event.end;
+	dateformat = "dd/MM/yyyy 'à' HH:mm";
+}
+isEtudiant : WOConditional {
+	condition = session.isEtudiant;
+}
+isGestionnaire : WOConditional {
+	condition = session.isGestionnaire;
+}
+RecherchePreCandidat : PreCandidatSrch {
+	selectedCandidat = candidat;
+	updateContainerID = "RechercheContainer";
+	callbackOnSelectionnerCandidat = "selectCandidat";
+}
+

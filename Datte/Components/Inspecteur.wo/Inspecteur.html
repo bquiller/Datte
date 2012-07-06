@@ -1,0 +1,28 @@
+<webobject name = "RechercheContainer">
+  	<h1><center>Gestion du rendez-vous</center></h1>
+  	<b>Début : </b><webobject name = "EventStart"/> 
+	<b>Fin : </b><webobject name = "EventEnd"/><BR/>
+	<b>Places disponibles : </b><webobject name = "EventTitle"/><BR/><BR/>
+	
+  <webobject name = "isEtudiant">
+    <webobject name = "ValiderInscription"></webobject>
+    <webobject name = "AnnulerInscription"></webobject>
+  </webobject>
+  <webobject name = "isGestionnaire">
+    <webobject name = "ShowAddParticipant">
+  		<webobject name = "Form">
+  			<webobject name = "RecherchePreCandidat"></webobject>
+  		</webobject><br/>
+  		<webobject name = "ShowSelCandidat">
+  			Ajouter <webobject name = "NewEventParticipant"/><webobject name = "AddParticipant"/>
+  		</webobject>
+  	</webobject>
+  	<webobject name = "MessageErreur"/>
+  	<br/>
+  	<b> Participants : </b> 
+  	<webobject name = "EventParticipants">
+  		<webobject name = "EventParticipant"/><webobject name = "DeleteParticipant"/><br/>
+  	</webobject>
+  </webobject>
+  <webobject name = "Fermer"/>
+</webobject> 

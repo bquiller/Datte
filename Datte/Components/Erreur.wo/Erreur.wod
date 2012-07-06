@@ -1,0 +1,11 @@
+RetourAccueil : WOHyperlink {
+	action = retourAccueil;
+	// onClick = "parent.Windows.closeAll();";
+	target = "_top";
+}
+ExceptionInfos : WOText {
+	value = session.messageErreur; 
+  	style = "width:100%;";
+	rows = "8";
+}
+

@@ -1,0 +1,34 @@
+CssDATTE : ERXStyleSheet {
+	filename = "styles/datte.css";
+	framework = "app";
+}
+DefaultStyles : WOString {
+	value = getDefaultStyles;
+	escapeHTML = false;
+}
+
+
+imgOffLine: WOImage {
+	border = 0;
+	filename = "img/offline.gif";
+	framework = "CRIWebExt3";
+}
+
+imgItem: WOImage {
+	filename = "img/item-closed.gif";
+	framework = "CRIWebExt3";
+}
+
+linkAppURL: WOHyperlink {
+	href = applicationURL;
+	target = "_top";
+}
+
+siHasSiteUrlYES: WOConditional {
+	condition = hasSiteURL;
+}
+
+linkSiteURL: WOHyperlink {
+	href = siteURL;
+	target = "_top";
+}

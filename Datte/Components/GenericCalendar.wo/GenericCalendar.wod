@@ -1,0 +1,19 @@
+PageProxy : AjaxProxy {
+	proxyName = "wopage";
+	name = "jsonrpc";
+}
+
+Impression: CktlButton {
+	id = "Impression";
+	style = "visibility: hidden";
+	action = onImprimer;
+	text = "Ouvrir";
+	title = "Ouvrir le document";
+}
+
+Refresh: CktlButton {
+	id = "Refresh";
+	action = refresh;
+	text = "Rafraichir";
+	title = "Rafraichir le calendrier";
+}

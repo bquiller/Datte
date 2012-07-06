@@ -1,0 +1,46 @@
+BTRechercher : CktlAjaxSubmitButton {
+	title = "Rechercher";
+	action = rechercher;
+	type = "find";
+    updateContainerID = "RechercheCandidatContainer";
+}
+RechercheCandidatContainer : AjaxUpdateContainer {
+	id = "RechercheCandidatContainer";
+	class = "box";
+}
+
+TFSrchNom : WOTextField {
+	id = "nom";
+	value = srchNom;
+}
+
+TFSrchPrenom : WOTextField {
+	id = "prenom";
+	value = srchPrenom;
+}
+hasResults : ERXNonNullConditional {
+	condition = candidats;
+}
+CandidatsTableView : CktlAjaxTableView {
+	id = "candidatsTbv";
+	colonnes = colonnes;
+	dg = displayGroup;
+	item = selectedCandidat;
+	selectionEnabled = true;
+	
+	updateContainerID = ^updateContainerID;
+	callbackOnSelectionner = ^callbackOnSelectionnerCandidat;
+}
+CreateCandidat : CktlAjaxButton {
+	id = "CreateCandidat";
+	action = onCreerCandidat;
+	visibility = "hidden";
+	button = true;
+	updateContainerID = ^updateContainerID;
+	type = "new";
+	showBusyImage = true;
+	text = getTitleCreateCandidat;	
+}
+MessageErreur : WOString {
+	value = erreurSaisieMessage;
+}

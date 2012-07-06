@@ -1,0 +1,217 @@
+
+/* --------------------------------------------------------------------------- */
+/* Classes des onglets*/
+
+.ajaxTabbedPanel {
+  width: auto;
+  border-bottom: 2px solid #4E80C0;
+  padding: 0px;
+  margin: 0px;
+}
+
+.ajaxTabbedPanelTab-selected {
+  display: inline;
+  padding: 3px 7px 1px 7px;
+  background: #D1E2F9;
+  border: 1px solid #4E80C0;
+  border-bottom: 0;
+}
+
+.ajaxTabbedPanelTab-unselected {
+  display: inline;
+  padding: 2px 5px 1px 5px;
+  background: #ffffff;
+  border: 1px solid #4E80C0;
+  border-bottom: 0;
+  color: #6699CC;
+}
+
+.ajaxTabbedPanelTab-selected a {
+  font-weight: bold;
+  color: #6699CC;
+  padding: 3px;
+  text-decoration: none;
+}
+
+.ajaxTabbedPanelTab-unselected a {
+  padding: 3px;
+  color: #6699CC;
+  text-decoration: none;
+}
+
+.ajaxTabbedPanelPanes {
+  padding-left: 0px;
+  margin: 0;
+  border: 2px solid #4E80C0;
+  border-top: none;
+  overflow: auto;
+}
+.ajaxTabbedPanelPanes#TabbedPanelDetailConvention_panecontrol {
+  height: 495px;
+  overflow: hidden;
+  border: none;
+}
+.ajaxTabbedPanelPanes#TabbedPanelDetailAvenant_panecontrol {
+  height: 495px;
+  overflow: hidden;
+  border: none;
+}
+.ajaxTabbedPanelPanes#TabbedPanelPartenairesEtContacts_panecontrol {
+  height: 475px;
+}
+.ajaxTabbedPanelPanes#TabbedPanelDetailPartenaire_panecontrol {
+  height: 240px;
+  overflow-y: visible;
+}
+
+.ajaxTabbedPanelPane-selected {
+  list-style-type: none;
+  display: block;
+}
+
+.ajaxTabbedPanelPane-unselected {
+  list-style-type: none;
+  display: none;
+}
+
+/* --------------------------------------------------------------------------- */
+/* Classes du calendar */
+
+div#selectedDay {
+	float: left;
+}
+
+div#selectedDay h1 {
+	margin: 0em;
+	font-size: 2em;
+}
+
+div#selectedDay ul.events {
+	list-style-type: none;
+	margin-left: 1em;
+	padding: 0em;
+}
+
+table#calendar {
+	float: right;
+	border: 2px solid rgb(0, 0, 0); 
+	border-spacing: 0em;
+	border-collapse: collapse;
+}
+
+table#calendar td.day {
+	border: 1px solid rgb(150, 150, 150);
+	background-color: rgb(255, 255, 255);
+	border-collapse: collapse;
+	height: 6em;
+	width: 6em;
+	text-align: right;
+	vertical-align: top;
+	padding: 0.5em;
+	font-size: 0.75em;
+	cursor: pointer;
+}
+
+table#calendar td.day.weekend {
+	background-color: rgb(240, 240, 240);
+}
+
+table#calendar td.day.today {
+	background-color: rgb(240, 240, 255);
+	font-weight: bold;
+}
+
+table#calendar td.day:hover {
+	font-weight: bold;
+	background-color: rgb(250, 250, 250);
+}
+
+table#calendar td.day.today:hover {
+	background-color: rgb(235, 235, 250);
+}
+
+table#calendar td.day.weekend:hover {
+	background-color: rgb(235, 235, 235);
+}
+
+/* --------------------------------------------------------------------------- */
+/* Classes du wrapper horizontal */
+
+.cktl_container_principal {
+  position: absolute;
+  color: black;
+  margin-left: 15px;
+  background-color: #FFFFFF;
+  text-align: center;
+  border: 0px solid #999999;
+  font-size: 11px;
+  float: inherit;
+}
+
+.cktl_entete_wrapper_horizontal {
+  height : 30px;
+  background-color: #CCCCCC;
+  position: relative;
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+  text-align:center;
+  font-size:2em;
+  display: block;
+  color: #000000;
+  font-weight: bold;
+}
+.cktl_copyright_wrapper_horizontal {
+  margin-top: 1em;
+  height : 15px;
+  background-color: #CCCCCC;
+  position: relative;
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+  font-size: 8pt;
+  display: block;
+  color: #000000;
+  font-weight: bold;
+}
+.cktl_copyright_wrapper_horizontal a {
+  text-decoration: none;
+}
+.cktl_accueil_wrapper_horizontal {
+  width: 900px;
+  height: 555px;
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+
+/* --------------------------------------------------------------------------- */
+/* Wrapper horizontal bleu */
+/*
+.cktl_container_principal {
+  border: 2px solid #4E80C0;
+}
+
+.cktl_entete_wrapper_horizontal {
+  background-color: #6699CC;
+}
+
+.cktl_copyright_wrapper_horizontal {
+  background-color: #6699CC;
+}
+*/
+
+/* --------------------------------------------------------------------------- */
+/* Wrapper horizontal vert */
+/*
+.cktl_container_principal {
+  border: 2px solid #4AA329;
+}
+
+.cktl_entete_wrapper_horizontal {
+  background-color: #B1BF82;
+}
+
+.cktl_copyright_wrapper_horizontal {
+  background-color: #B1BF82;
+}
+*/
+

@@ -1,0 +1,77 @@
+
+PageProxy : AjaxProxy {
+	proxyName = "wopage";
+	name = "jsonrpc";
+} 
+
+Wrapper : Wrapper {
+	onloadJS = onloadJS;
+}
+isOpen : WOConditional {
+	condition = isOpen;
+}
+messageErreur : WOString {
+	value = messageErreur;
+}
+isNotOpen : WOConditional {
+	condition = isOpen;
+	negate = true;
+}
+Form : WOForm {
+	multipleSubmit = true;
+}
+ExceptionModalDialog: CktlAjaxModalDialog {
+	id = "ExceptionModalDialog";
+	pageName = "Erreur";
+	title = "Une erreur inattendue est survenue";
+	minWidth = 500;
+	resizable = true;
+	minimizable = false;
+	closable = false;
+	maximizable = false;
+	draggable = true;
+	centerVertically = true;
+	open = isOpenFenetreException;
+	showOpener = false;
+}
+
+IfEtudiant : WOConditional {
+	condition = session.isEtudiant;
+}
+
+IfGestionnaire : WOConditional {
+	condition = session.isGestionnaire;
+}
+
+IfAutorise: WOConditional {
+	condition = session.isAutorise;
+}
+
+IfNotAutorise: WOConditional {
+	condition = session.isAutorise;
+	negate = true;
+}
+Calendar: GenericCalendar {
+}
+
+CalendarContainer: AjaxUpdateContainer {
+	id = "CalendarContainer";
+}
+InspecteurBox: CktlAjaxModalDialog {
+	label = "Inspecteur";
+	id = "InspecteurBox";
+	pageName = "Inspecteur";
+	title = "Inspecter un évènement";
+	minWidth = 500;
+	resizable = true;
+	minimizable = false;
+	closable = true;
+	maximizable = false;
+	draggable = true;
+	centerVertically = true;
+	height = 600;
+	closeUpdateContainerID = "CalendarContainer";
+	onClose = "document.getElementById('Refresh_btn').click();";
+	
+}
+

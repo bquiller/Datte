@@ -1,0 +1,108 @@
+<webobject name = "Refresh"></webobject>  
+
+  <div id='calendar'></div>
+  
+	<script type='text/javascript'>
+	
+jQuery.noConflict()(function ($) {
+
+	$(document).ready(function() {
+	
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+		
+		$('#calendar').fullCalendar({
+			height: 550,
+			firstHour: 8,
+			slotMinutes: 15,
+   			minTime: 8,
+   			maxTime: 20,
+   			weekends: false,
+			editable: jsonrpc.wopage.isEditable(),
+			selectable: jsonrpc.wopage.isEditable(),
+			droppable: jsonrpc.wopage.isEditable(),
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			buttonText: {
+            	today: 'aujourd\'hui',
+            	day: 'jour',
+            	week:'semaine',
+            	month:'mois'
+        	},
+			monthNames: ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
+			monthNamesShort: ['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'],
+			dayNames: ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'],
+			dayNamesShort: ['Dim','Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+			titleFormat: {
+ 				month: 'MMMM yyyy', // ex : Janvier 2010
+	 			week: "d[ MMMM][ yyyy]{ - d MMMM yyyy}", // ex : 10  16 Janvier 2010, semaine à cheval : 28 Décembre 2009 - 3 Janvier 2010
+				// todo : ajouter le numéro de la semaine
+	 			day: 'dddd d MMMM yyyy' // ex : Jeudi 14 Janvier 2010
+			},
+			columnFormat: {
+ 				month: 'ddd', // Ven.
+	 			week: 'ddd d', // Ven. 15
+				day: '' // affichage déja complet au niveau du 'titleFormat'
+			},
+			axisFormat: 'H:mm', // la demande de ferdinand.amoi : 15:00 (pour 15, simplement supprimer le ':mm'
+			timeFormat: {
+				'': 'H:mm', // événements vue mensuelle.
+				agenda: 'H:mm{ - H:mm}' // événements vue agenda
+			},
+			firstDay:1, // Lundi premier jour de la semaine 
+
+			defaultView: 'agendaWeek',
+			selectHelper: true,
+			disableDragging: true,
+			disableResizing: true,
+    		events: function(start, end, callback) {
+    	   		var events = [];
+ 				var resas = jsonrpc.wopage.events(start, end);
+            	
+            	resas.nsarray.each(function(resa, index) { 
+					events.push({
+						className: resa.className,
+                        title: resa.title,
+                        libelle: resa.libelle,
+                        start: resa.startAsString,
+                        end: resa.endAsString,
+                        allDay : resa.allDay
+                    });
+				});
+				
+                callback(events);
+	        },
+			eventClick: function(calEvent) {
+        			if (calEvent.allDay) {
+        				jsonrpc.wopage.dateImpression(JSON.stringify(calEvent));
+        				document.getElementById('Impression_btn').click();
+						return false;
+        			} else {
+						jsonrpc.wopage.eventAtIndex(JSON.stringify(calEvent));
+						openCAMD_InspecteurBox('Inspection');
+						return false;
+        			}
+		    },
+		    eventRender: function(event, element) {
+				element.qtip({
+      				content: event.libelle
+   				});
+			}	
+		});
+		var d = new Date(jsonrpc.wopage.getCurrentDate());
+		$('#calendar').fullCalendar('gotoDate', d);
+	});
+}); 
+	</script>
+	<webobject name = "PageProxy"></webobject>
+	<br/>
+	Légende : 
+		<span style="padding-left: 10px; padding-right: 10px; margin-right: 10px;" class="libre">Libre</span>
+		<span style="padding-left: 10px; padding-right: 10px; margin-right: 10px;" class="entre2">Disponible</span>
+		<span style="padding-left: 10px; padding-right: 10px; margin-right: 10px;" class="plein">Plein</span>
+		<webobject name = "Impression"></webobject>
